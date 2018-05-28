@@ -50,49 +50,44 @@ const ActiveSkillSchema = new Schema({
     }
 });
 
-const AccountSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        maxlength: 20
-    },
-    level: {
-        type: Number,
-        required: true,
-        default: 1
-    },
-    experience: {
-        type: Number,
-        required: true,
-        default: 0
-    },
-    // current coins
-    coins: {
-        type: Number,
-        required: true,
-        default: 0
-    },
-    // all user battles
-    battles: {
-        type: [BattleSchema],
-        required: false,
-        default: [],
-        select: false
-    },
-    // skills that the player chose for battles
-    activeSkills: {
-        type: [ActiveSkillSchema],
-        required: false,
-        default: [],
-        select: false
-    }
-});
-
 // User Schema
 const UserSchema = new Schema({
     account: {
-        type: AccountSchema,
-        required: false
+        username: {
+            type: String,
+            required: true,
+            maxlength: 20
+        },
+        level: {
+            type: Number,
+            required: true,
+            default: 1
+        },
+        experience: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        // current coins
+        coins: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        // all user battles
+        battles: {
+            type: [BattleSchema],
+            required: false,
+            default: [],
+            select: false
+        },
+        // skills that the player chose for battles
+        activeSkills: {
+            type: [ActiveSkillSchema],
+            required: false,
+            default: [],
+            select: false
+        }
     },
     facebook: {
         id: {
@@ -103,10 +98,6 @@ const UserSchema = new Schema({
             required: true
         }
     }
-},
-{
-    toObject: { virtuals: true },
-    toJSON: { virtuals: true }
 });
 
 module.exports = mongoose.model('User', UserSchema);

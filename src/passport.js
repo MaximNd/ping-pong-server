@@ -34,10 +34,15 @@ const facebookStrategy = new FacebookTokenStrategy({
             return next(null, user);
         }
 
+        const email = profile.emails[0].value === '' ? 'testemail@gmail.com' : profile.emails[0].value
+
         const newUser = new User({
+            account: {
+                username: email.split('@')[0]
+            },
             facebook: {
                 id: profile.id,
-                email: profile.emails[0].value === '' ? 'fakeEmail@mail.com' : profile.emails[0].value
+                email
             }
         });
         await newUser.save();

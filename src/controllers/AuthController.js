@@ -13,15 +13,16 @@ function jwtSignUser(user) {
 module.exports = {
     async login(req, res) {
         const { user } = req;
-        const token = jwtSignUser(user);
-        // TODO delete maybe
-        // res.append('access-control-allow-headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
-        // res.append('access-control-allow-methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        // res.append('access-control-expose-headers', 'Authorization');
+        const access_token = jwtSignUser(user);
 
-        // res.append('authorization', `Bearer ${token}`);
+        res.append('access-control-allow-headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+        res.append('access-control-allow-methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.append('access-control-expose-headers', 'Authorization');
+
+        res.append('authorization', `Bearer ${access_token}`);
         res.send({
-            user
+            user,
+            access_token
         });
         
     }
