@@ -46,7 +46,7 @@ const ActiveSkillSchema = new Schema({
     skillData: {
         type: ObjectId,
         required: true,
-        ref: 'AvailableSkills'
+        ref: 'AvailableSkill'
     }
 });
 
