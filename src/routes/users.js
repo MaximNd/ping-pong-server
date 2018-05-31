@@ -7,6 +7,10 @@ const isAuthenticated = require('./../middlewares/middlewares').isAuthenticated;
 router.route('/users/:id')
     .put(UserController.updateUser);
 
+// get all battles by user id
+router.route('/users/:id/battles')
+    .get(UserController.userBattles);
+
 // id - user id for battles update, request body contains new battle
 router.route('/users/:id/battles')
     .put(UserController.pushBattle);

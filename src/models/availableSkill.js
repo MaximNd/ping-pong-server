@@ -16,7 +16,8 @@ const AvailableSkillSchema = new Schema({
     },
     currentLevel: {
         type: Number,
-        required: true
+        required: true,
+        default: 1
     }
 });
 
