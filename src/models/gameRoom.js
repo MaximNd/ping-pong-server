@@ -12,12 +12,8 @@ const GameRoomSchema = new Schema({
     // joined player
     secondPlayer: {
         type: ObjectId,
-        required: true,
+        required: false,
         ref: 'User'
-    },
-    isOpen: {
-        type: Boolean,
-        required: true
     },
     battleType: {
         type: ObjectId,

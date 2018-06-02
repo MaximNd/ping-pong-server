@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 })
 
 // routes
-const { auth, users, skills, availableSkills, battleTypes } = require('./routes/index');
+const { auth, users, skills, availableSkills, battleTypes, gameRooms } = require('./routes/index');
 const API = '/api';
 
 app.use(API, auth);
@@ -40,5 +40,6 @@ app.use(API, users);
 app.use(API, skills);
 app.use(API, availableSkills);
 app.use(API, battleTypes);
+app.use(API, gameRooms);
 
 module.exports = app;
