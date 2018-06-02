@@ -96,6 +96,11 @@ const UserSchema = new Schema({
         email: {
             type: String,
             required: true
+        },
+        name: {
+            familyName: String, 
+            givenName: String, 
+            middleName: String 
         }
     }
 });

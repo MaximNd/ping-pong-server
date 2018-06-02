@@ -42,7 +42,8 @@ const facebookStrategy = new FacebookTokenStrategy({
             },
             facebook: {
                 id: profile.id,
-                email
+                email,
+                name: profile.name
             }
         });
         await newUser.save();
