@@ -10,16 +10,18 @@ module.exports = {
     },
 
     async createRoom(req, res) {
-        const gameRoom = new GameRoom({
-            firstPlayer: req.body.firstPlayerId,
-            battleType: req.body.battleTypeId
-        });
-
-        await gameRoom.save();
-        GameRoom
-            .populate(gameRoom, { path: 'firstPlayer battleType' })
-            .then(gameRoom => res.send({ gameRoom }))
-            .catch(err => console.log(err));
+        try {
+            const gameRoom = new GameRoom({
+                firstPlayer: req.body.firstPlayerId,
+                battleType: req.body.battleTypeId
+            });
+    
+            await gameRoom.save();
+            const gameRoom = await GameRoom.populate(gameRoom, { path: 'firstPlayer battleType' });
+            res.send({ gameRoom });
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     deleteRoomById(req, res) {

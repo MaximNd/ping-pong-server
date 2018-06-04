@@ -4,7 +4,7 @@ const GameRoomController = require('./../controllers/GameRoomController');
 router.route('/game-rooms')
     .get(GameRoomController.getAllGameRooms);
 
-// request body containt firstPlayerId and battleTypeId
+// request body containt battleTypeId
 router.route('/game-rooms')
     .post(GameRoomController.createRoom);
 
