@@ -16,13 +16,16 @@ module.exports = {
         });
 
         await gameRoom.save();
-
-        res.send({ gameRoom });
+        GameRoom
+            .populate(gameRoom, { path: 'firstPlayer battleType' })
+            .then(gameRoom => res.send({ gameRoom }))
+            .catch(err => console.log(err));
     },
 
     deleteRoomById(req, res) {
-        GameRoom.deleteOne({ _id: req.params.id })
-            .then(data => res.send(data))
+        const id = req.params.id;
+        GameRoom.deleteOne({ _id: id })
+            .then(data => res.send({ gameRoomId: id, ...data }))
             .catch(err => console.log(err))
     }
 };
