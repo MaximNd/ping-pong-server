@@ -17,8 +17,8 @@ module.exports = {
             });
     
             await gameRoom.save();
-            const gameRoom = await GameRoom.populate(gameRoom, { path: 'firstPlayer battleType' });
-            res.send({ gameRoom });
+            const populatedGameRoom = await GameRoom.populate(gameRoom, { path: 'firstPlayer battleType' });
+            res.send({ gameRoom: populatedGameRoom });
         } catch (err) {
             console.log(err);
         }
