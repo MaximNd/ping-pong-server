@@ -35,4 +35,4 @@ const SkillSchema = new Schema({
     // TODO skill actions and data
 });
 
-module.exports = mongoose.model('Skill', SkillSchema);
+module.exports = mongoose.model('Skill', SkillSchema, 'skills', process.env.NODE_ENV === 'test');

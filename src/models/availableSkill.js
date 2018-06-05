@@ -21,4 +21,4 @@ const AvailableSkillSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('AvailableSkill', AvailableSkillSchema);
+module.exports = mongoose.model('AvailableSkill', AvailableSkillSchema, 'availableskills', process.env.NODE_ENV === 'test');

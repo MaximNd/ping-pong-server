@@ -26,4 +26,4 @@ const BattleTypeSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('BattleType', BattleTypeSchema);
+module.exports = mongoose.model('BattleType', BattleTypeSchema, 'battletypes', process.env.NODE_ENV === 'test');

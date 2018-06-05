@@ -22,4 +22,4 @@ const GameRoomSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('GameRoom', GameRoomSchema);
+module.exports = mongoose.model('GameRoom', GameRoomSchema, 'gamerooms', process.env.NODE_ENV === 'test');

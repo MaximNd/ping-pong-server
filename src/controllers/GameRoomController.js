@@ -2,7 +2,7 @@ const GameRoom = require('./../models/gameRoom');
 
 module.exports = {
     getAllGameRooms(req, res) {
-        GameRoom.find({})
+        return GameRoom.find({})
             .populate('firstPlayer')
             .populate('battleType')
             .then(gameRooms => res.send({ gameRooms }))
@@ -12,7 +12,7 @@ module.exports = {
     async createRoom(req, res) {
         try {
             const gameRoom = new GameRoom({
-                firstPlayer: req.body.firstPlayerId,
+                firstPlayer: req.user.id,
                 battleType: req.body.battleTypeId
             });
     
@@ -26,7 +26,7 @@ module.exports = {
 
     deleteRoomById(req, res) {
         const id = req.params.id;
-        GameRoom.deleteOne({ _id: id })
+        return GameRoom.deleteOne({ _id: id })
             .then(data => res.send({ gameRoomId: id, ...data }))
             .catch(err => console.log(err))
     }

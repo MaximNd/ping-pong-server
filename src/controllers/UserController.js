@@ -3,14 +3,14 @@ const User = require('./../models/user');
 module.exports = {
     updateUser(req, res) {
         const { user } = req.body;
-        User.update({ _id: req.params.id }, { $set: user })
+        return User.update({ _id: req.params.id }, { $set: user })
             .then(data => res.sendStatus(200))
             .catch(err => console.log(err))
     },
 
     userBattles(req, res) {
         const { id } = req.params;
-        User.findById(id)
+        return User.findById(id)
             .select('account.battles')
             .populate({ path: 'account.battles.enemy', select: '-facebook' })
             .then(data => res.send({ battles: data.account.battles }))
@@ -19,7 +19,7 @@ module.exports = {
 
     pushBattle(req, res) {
         const { battle } = req.body;
-        User.update({ _id: req.params.id }, { $push: { 'account.battles': battle } })
+        return User.update({ _id: req.params.id }, { $push: { 'account.battles': battle } })
             .then(data => res.sendStatus(200))
             .catch(err => console.log(err))
     }

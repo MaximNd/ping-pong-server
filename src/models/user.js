@@ -105,4 +105,4 @@ const UserSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema, 'users', process.env.NODE_ENV === 'test');
