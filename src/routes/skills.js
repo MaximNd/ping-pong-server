@@ -3,6 +3,6 @@ const passport = require('passport');
 const SkillsController = require('./../controllers/SkillConroller');
 
 router.route('/skills')
-    .get(SkillsController.getAllSkils);
+    .get(isAuth, SkillsController.getAllSkils);
 
 module.exports = router;

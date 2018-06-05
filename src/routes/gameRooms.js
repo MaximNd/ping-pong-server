@@ -2,13 +2,13 @@ const router = require('express').Router();
 const GameRoomController = require('./../controllers/GameRoomController');
 
 router.route('/game-rooms')
-    .get(GameRoomController.getAllGameRooms);
+    .get(isAuth, GameRoomController.getAllGameRooms);
 
 // request body containt battleTypeId
 router.route('/game-rooms')
-    .post(GameRoomController.createRoom);
+    .post(isAuth, GameRoomController.createRoom);
 
 router.route('/game-rooms/:id')
-    .delete(GameRoomController.deleteRoomById)
+    .delete(isAuth, GameRoomController.deleteRoomById)
 
 module.exports = router

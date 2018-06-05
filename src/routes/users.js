@@ -5,14 +5,14 @@ const isAuthenticated = require('./../middlewares/middlewares').isAuthenticated;
 
 // id - user id for update, request body contains updated user
 router.route('/users/:id')
-    .put(UserController.updateUser);
+    .put(isAuth, UserController.updateUser);
 
 // get all battles by user id
 router.route('/users/:id/battles')
-    .get(UserController.userBattles);
+    .get(isAuth, UserController.userBattles);
 
 // id - user id for battles update, request body contains new battle
 router.route('/users/:id/battles')
-    .put(UserController.pushBattle);
+    .put(isAuth, UserController.pushBattle);
 
 module.exports = router;
