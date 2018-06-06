@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const passport = require('passport');
 const AvailableSkillsController = require('./../controllers/AvailableSkillController');
-const AvailableSkill = require('./../models/availableSkill');
 const isAuth = require('./../middlewares/middlewares').isAuthenticated;
 
 // get all available skills by user ID

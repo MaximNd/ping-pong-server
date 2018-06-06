@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 const UserController = require('./../controllers/UserController');
-const isAuthenticated = require('./../middlewares/middlewares').isAuthenticated;
+const isAuth = require('./../middlewares/middlewares').isAuthenticated;
 
 // id - user id for update, request body contains updated user
 router.route('/users/:id')

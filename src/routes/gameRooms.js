@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const GameRoomController = require('./../controllers/GameRoomController');
+const isAuth = require('./../middlewares/middlewares').isAuthenticated;
 
 router.route('/game-rooms')
     .get(isAuth, GameRoomController.getAllGameRooms);
