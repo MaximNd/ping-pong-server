@@ -22,14 +22,14 @@ These instructions will get you a copy of the project up and running on your loc
 Add your application configuration to your `.env` file in the root of project and initialize the variables that are shown in the `.env.example` file. After that open terminal at the project root directory and run command `npm install` which will install all dependencies.
 
 ### Development
-This command below serve for run server. Default port is 3000 but you can change it by setting enviroment variable `PORT` in `.env` file.
+This command below serve for run server in development mode. Default port is 3000 but you can change it by setting enviroment variable `PORT` in `.env` file.
 ```
-npm start
+npm run dev
 ```
 
 
 ## Running Tests
-To run the tests open terminal and run this command below. It will run [Jest](https://facebook.github.io/jest/) tests.
+To run the tests open terminal and run this command below. It will run [Jest](https://facebook.github.io/jest/) tests. This command also download a mongodb memory server. So the first launch may take some time. Each test needs database connection. Therefore, if there are problems with the database connection, simply restart the tests.
 ```
 npm run test
 ```

@@ -1,1 +1,1 @@
-web: nodemon index.js
+web: pm2 start index.js

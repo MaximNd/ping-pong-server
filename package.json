@@ -7,7 +7,9 @@
     "node": "10.3.0"
   },
   "scripts": {
-    "start": "nf start",
+    "start": "npm run prod",
+    "dev": "nf -j Procfile.dev start",
+    "prod": "nf start",
     "test": "jest --runInBand --verbose --forceExit"
   },
   "repository": {
@@ -30,6 +32,7 @@
     "passport": "^0.4.0",
     "passport-facebook-token": "^3.3.0",
     "passport-jwt": "^4.0.0",
+    "pm2": "^2.10.4",
     "socket.io": "^2.1.1"
   },
   "devDependencies": {
