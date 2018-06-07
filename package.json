@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "10.0.0"
+    "node": "10.3.0"
   },
   "scripts": {
     "start": "nf start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --runInBand --verbose --forceExit"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,15 @@
     "socket.io": "^2.1.1"
   },
   "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "jest": "^23.1.0",
+    "mongodb-memory-server": "^1.8.0",
     "nodemon": "^1.17.5"
+  },
+  "jest": {
+    "testEnvironment": "./__tests__/mongo-enviroment.js",
+    "globalSetup": "./__tests__/setup.js",
+    "globalTeardown": "./__tests__/teardown.js",
+    "testRegex": "/__tests__/.*test\\.js$"
   }
 }
