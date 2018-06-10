@@ -7,11 +7,11 @@ const io = socketIO(server);
 
 io.on('connection', socket => {
     socket.on('createGameRoom', gameRoom => {
-        socket.emit('newGameRoomCreated', gameRoom);
+        socket.broadcast.emit('newGameRoomCreated', gameRoom);
     });
 
     socket.on('connectToGameRoom', gameRoomId => {
-        socket.emit('connectedToGameRoom', gameRoomId);
+        socket.broadcast.emit('connectedToGameRoom', gameRoomId);
     });
 });
 
