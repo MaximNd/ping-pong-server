@@ -14,10 +14,11 @@ io.on('connection', socket => {
 
     socket.on('connectToGameRoom', gameRoomId => {
         console.log(gameRoomId);
-        GameRoomController.deleteRoomById(gameRoomId)
-            .then(() => {
-                socket.broadcast.emit('gameRoomDeleted', gameRoomId);
-            });
+        socket.broadcast.emit('gameRoomDeleted', gameRoomId);
+        // GameRoomController.deleteRoomById(gameRoomId)
+        //     .then(() => {
+        //         socket.broadcast.emit('gameRoomDeleted', gameRoomId);
+        //     });
     });
 });
 
