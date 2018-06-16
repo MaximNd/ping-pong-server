@@ -26,8 +26,11 @@ module.exports = {
 
     deleteRoomById(req, res) {
         const id = req.params.id;
-        return GameRoom.deleteOne({ _id: id })
-            .then(data => res.send({ gameRoomId: id, ...data }))
-            .catch(err => console.log(err))
+        return GameRoom.findByIdAndRemove(id)
+            .then(data => res.send(data))
+            .catch(err => console.log(err));
+        // return GameRoom.deleteOne({ _id: id })
+        //     .then(data => res.send({ gameRoomId: id, ...data }))
+        //     .catch(err => console.log(err))
     }
 };

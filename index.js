@@ -5,20 +5,13 @@ const socketIO = require('socket.io');
 const server = http.createServer(app);
 const io = socketIO(server);
 
-const GameRoomController = require('./src/controllers/GameRoomController');
-
 io.on('connection', socket => {
     socket.on('createGameRoom', gameRoom => {
         socket.broadcast.emit('newGameRoomCreated', gameRoom);
     });
 
     socket.on('connectToGameRoom', gameRoomId => {
-        console.log(gameRoomId);
         socket.broadcast.emit('gameRoomDeleted', gameRoomId);
-        // GameRoomController.deleteRoomById(gameRoomId)
-        //     .then(() => {
-        //         socket.broadcast.emit('gameRoomDeleted', gameRoomId);
-        //     });
     });
 });
 
