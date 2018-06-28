@@ -24,13 +24,14 @@ module.exports = {
         }
     },
 
-    deleteRoomById(req, res) {
-        const id = req.params.id;
-        return GameRoom.findByIdAndRemove(id)
-            .then(data => res.send(data))
-            .catch(err => console.log(err));
-        // return GameRoom.deleteOne({ _id: id })
-        //     .then(data => res.send({ gameRoomId: id, ...data }))
-        //     .catch(err => console.log(err))
+    async deleteRoomById(req, res) {
+        try {
+            const id = req.params.id;
+            const gameRoom = await GameRoom.findById(id).populate('battleType');
+            await gameRoom.remove();
+            res.send(gameRoom);
+        } catch (err) {
+            console.log(err);
+        }
     }
 };
